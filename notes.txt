@@ -1,0 +1,16 @@
+cube(ProductCube) %>%
+  col(MerchandiseSalesQty) %>%
+  row(Date.Year, Product.ProductGroupCurrent) %>%
+  order(MerchandiseSalesQty, desc) %>%
+  top(10)
+
+SELECT 
+  [Measures].[MerchandiseSalesQty] ON 0, 
+  HEAD ( 
+    ORDER( 
+      ( [Date].[Year].CHILDREN, 
+        [Product].[ProductGroupCurrent].CHILDREN ), 
+      [Measures].[MerchandiseSalesQty], 
+      BDESC),
+    10 ) ON 1 
+FROM [ProductCube]
