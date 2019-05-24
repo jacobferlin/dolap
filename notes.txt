@@ -16,3 +16,7 @@ SELECT
     10 ) ON 1
 FROM ( SELECT [Product].[ProductBusinessGroup].[Jotex] ON 0,
        FROM [ProductCube] )
+
+TODO
+ - Add calculated members (WITH MEMBER...)
+ - How will calculated members take group_by into consideration?
