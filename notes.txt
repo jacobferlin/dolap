@@ -1,4 +1,4 @@
-cube(ProductCube) %>%
+cube(con, ProductCube) %>%
   measure(MerchandiseSalesQty) %>%
   group_by(Date.Year, Product.ProductGroupCurrent) %>%
   filter(Product.ProductBusinessGroup == "Jotex") %>%
