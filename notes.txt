@@ -1,6 +1,7 @@
 cube(ProductCube) %>%
-  col(MerchandiseSalesQty) %>%
-  row(Date.Year, Product.ProductGroupCurrent) %>%
+  measure(MerchandiseSalesQty) %>%
+  group_by(Date.Year, Product.ProductGroupCurrent) %>%
+  filter(Product.ProductBusinessGroup == "Jotex") %>%
   order(MerchandiseSalesQty, desc) %>%
   top(10)
 
