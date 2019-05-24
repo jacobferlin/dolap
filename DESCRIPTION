@@ -1,11 +1,11 @@
 Package: dolap
 Type: Package
-Title: Query OLAP Cubes
+Title: Query OLAP Databases
 Version: 0.0.0.9000
 Author: Jacob Ferlin
 Maintainer: Jacob Ferlin <jacob.ferlin@me.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Query OLAP databases in a syntax similar to dplyr. 
+    Only covers most common user cases.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
