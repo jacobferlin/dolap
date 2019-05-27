@@ -1,12 +1,15 @@
 cube(con, ProductCube) %>%
-  values(MerchandiseSalesQty) %>%
+  with_member("Profit AS '[MerchandiseSales]-[MerchandiseSalesCOGS]'") %>%
+  values(Profit,
+         MerchandiseSalesQty) %>%
   rows(Date.Year, Product.ProductGroupCurrent) %>%
   filter(Product.ProductBusinessGroup == "Jotex") %>%
   arrange(desc(MerchandiseSalesQty)) %>%
   top_n(10)
 
 SELECT
-  [Measures].[MerchandiseSalesQty] ON 0,
+  { [Measures].[Profit],
+    [Measures].[MerchandiseSalesQty] } ON 0,
   HEAD (
     ORDER(
       ( [Date].[Year].CHILDREN,
@@ -18,4 +21,4 @@ FROM ( SELECT [Product].[ProductBusinessGroup].[Jotex] ON 0,
        FROM [ProductCube] )
 
 TODO
- - Add calculated members (WITH MEMBER...)
+ -
