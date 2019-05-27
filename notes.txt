@@ -1,6 +1,6 @@
 cube(con, ProductCube) %>%
-  measure(MerchandiseSalesQty) %>%
-  group_by(Date.Year, Product.ProductGroupCurrent) %>%
+  values(MerchandiseSalesQty) %>%
+  rows(Date.Year, Product.ProductGroupCurrent) %>%
   filter(Product.ProductBusinessGroup == "Jotex") %>%
   arrange(desc(MerchandiseSalesQty)) %>%
   top_n(10)
@@ -19,4 +19,3 @@ FROM ( SELECT [Product].[ProductBusinessGroup].[Jotex] ON 0,
 
 TODO
  - Add calculated members (WITH MEMBER...)
- - How will calculated members take group_by into consideration?
