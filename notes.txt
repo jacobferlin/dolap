@@ -7,6 +7,7 @@ cube(con, ProductCube) %>%
   arrange(desc(MerchandiseSalesQty)) %>%
   top_n(10)
 
+WITH MEMBER "Profit AS '[MerchandiseSales]-[MerchandiseSalesCOGS]'"
 SELECT
   { [Measures].[Profit],
     [Measures].[MerchandiseSalesQty] } ON 0,
