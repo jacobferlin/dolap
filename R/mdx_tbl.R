@@ -22,9 +22,9 @@ collect.mdx_tbl <- function() {
 }
 
 #' @importFrom pillar style_subtle
-print.mdx_tbl <- function(x) {
+print.mdx_tbl <- function(.data) {
   cat(style_subtle("# Cube:   "))
-  cat(style_subtle("ProductCube"))
+  cat(style_subtle(find_cube(.data)))
   cat(style_subtle("\n"))
 
   cat(style_subtle("# Filter: "))
