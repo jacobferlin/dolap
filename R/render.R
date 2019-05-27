@@ -1,14 +1,26 @@
 render <- function(.data) {
-  render_cube(.data)
+  paste0("SELECT ", render_values(.data), " ON 0 FROM ", render_cube(.data))
 }
 
 render_cube <- function(.data) {
   paste0("[", find_cube(.data), "]")
 }
 
-#' Return Name of Cube
+render_values <- function(.data) {
+  values_str <- find_values(.data) %>% lapply(rlang::quo_name)
+  paste0("[Measures].[", values_str, "]") %>%
+    paste0(collapse = ", ") %>%
+    paste0("{ ", ., " }")
+}
+
+#' Return Cube
 find_cube <- function(.data) {
   find_(.data, "cube")$info
+}
+
+#' Return Values
+find_values <- function(.data) {
+  find_(.data, "values")$info
 }
 
 #' Return First Operator with Name
