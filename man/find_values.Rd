@@ -2,10 +2,14 @@
 % Please edit documentation in R/render.R
 \name{find_values}
 \alias{find_values}
-\title{Return Values}
+\title{Return Values in .data}
 \usage{
+find_values(.data)
+
 find_values(.data)
 }
 \description{
-Return Values
+Return Values in .data
+
+Return Rows in .data
 }

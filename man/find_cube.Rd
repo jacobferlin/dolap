@@ -2,10 +2,10 @@
 % Please edit documentation in R/render.R
 \name{find_cube}
 \alias{find_cube}
-\title{Return Cube}
+\title{Return Cube in .data}
 \usage{
 find_cube(.data)
 }
 \description{
-Return Cube
+Return Cube in .data
 }

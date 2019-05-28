@@ -13,12 +13,17 @@ render_values <- function(.data) {
     paste0("{ ", ., " }")
 }
 
-#' Return Cube
+#' Return Cube in .data
 find_cube <- function(.data) {
   find_(.data, "cube")$info
 }
 
-#' Return Values
+#' Return Values in .data
+find_values <- function(.data) {
+  find_(.data, "values")$info
+}
+
+#' Return Rows in .data
 find_values <- function(.data) {
   find_(.data, "values")$info
 }
