@@ -1,3 +1,4 @@
+#' MDX_TBL Constructor
 mdx_tbl <- function() {
   structure(
     list(
@@ -8,6 +9,8 @@ mdx_tbl <- function() {
   )
 }
 
+#' Specify Cube
+#' @export
 cube <- function(src, cube) {
   arg <- rlang::enquo(cube)
 

@@ -9,11 +9,15 @@ add_op <- function(.data, name, info) {
   .data
 }
 
+#' Specify Values
+#' @export
 values <- function(.data, ...) {
   arg <- rlang::enquos(...)
   add_op(.data, 'values', arg)
 }
 
+#' Specify Rows
+#' @export
 rows <- function(.data, ...) {
   arg <- rlang::enquos(...)
   add_op(.data, 'rows', arg)
