@@ -8,7 +8,7 @@ mdx_tbl <- function() {
   )
 }
 
-tbl.OlapConnection <- function(src, cube) {
+cube <- function(src, cube) {
   arg <- rlang::enquo(cube)
 
   .data     <- mdx_tbl()
