@@ -26,6 +26,9 @@ collect.mdx_tbl <- function() {
 
 #' @importFrom pillar style_subtle
 print.mdx_tbl <- function(.data) {
+
+  tbl <- execute_query(.data)
+
   cat(style_subtle("# Cube:   "))
   cat(style_subtle(find_cube(.data)))
   cat(style_subtle("\n"))
@@ -34,13 +37,7 @@ print.mdx_tbl <- function(.data) {
   cat(style_subtle("ProductBusinessGroup == 'Jotex'"))
   cat(style_subtle("\n"))
 
-  cat(style_subtle("#"))
-  cat(style_subtle("\n"))
-
-  tbl <- tibble::as_tibble(olapR::execute2D(.data$src, render(.data)))
   print(tbl)
-
-  invisible(tbl)
 }
 
 misc <- function() {
