@@ -30,6 +30,14 @@ print.mdx_tbl <- function(.data) {
   cat(style_subtle("# Filter: "))
   cat(style_subtle("ProductBusinessGroup == 'Jotex'"))
   cat(style_subtle("\n"))
+
+  cat(style_subtle("#"))
+  cat(style_subtle("\n"))
+
+  tbl <- tibble::as_tibble(olapR::execute2D(.data$src, render(.data)))
+  print(tbl)
+
+  invisible(tbl)
 }
 
 misc <- function() {
