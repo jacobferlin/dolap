@@ -4,8 +4,7 @@ Title: Query OLAP Databases
 Version: 0.0.0.9000
 Author: Jacob Ferlin
 Maintainer: Jacob Ferlin <jacob.ferlin@me.com>
-Description: Query OLAP databases in a syntax similar to dplyr. 
-    Only covers most common user cases.
+Description: Query OLAP databases in a syntax similar to pivot table (Excel) and dplyr (tidyverse).
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
