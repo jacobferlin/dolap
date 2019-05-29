@@ -1,9 +1,20 @@
 render <- function(.data) {
-  paste0("SELECT ",
-         render_values(.data), " ON 0, ",
-         render_rows(.data), " ON 1 ",
-         "FROM ",
-         render_cube(.data))
+
+  query_cols <- paste0(render_values(.data), " ON 0")
+
+  query_rows <- ifelse(
+    is.null(find_rows(.data)),
+    " ",
+    paste0(", ", render_rows(.data), " ON 1 ")
+  )
+
+  paste0(
+    "SELECT ",
+    query_cols,
+    query_rows,
+    "FROM ",
+    render_cube(.data)
+  )
 }
 
 render_cube <- function(.data) {

@@ -2,10 +2,12 @@
 % Please edit documentation in R/render.R
 \name{find_}
 \alias{find_}
-\title{Return First Operator with Name}
+\title{Return First Operator with Name
+Returns NULL if Operator not found}
 \usage{
 find_(.data, name)
 }
 \description{
 Return First Operator with Name
+Returns NULL if Operator not found
 }
