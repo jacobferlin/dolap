@@ -63,6 +63,7 @@ find_filters <- function(.data) {
 }
 
 #' Return First Operator with Name
+#' Returns NULL if Operator not found
 find_ <- function(.data, name) {
 
   i      <- 1
@@ -70,6 +71,7 @@ find_ <- function(.data, name) {
   i_name <- ""
   while (i_name != name) {
     i_op   <- op(.data, i)
+    if (is.null(i_op)) return(NULL)
     i_name <- i_op$name
     i <- i + 1
     if (i > 20) break
