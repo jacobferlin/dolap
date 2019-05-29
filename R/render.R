@@ -1,3 +1,9 @@
+#' Show MDX Query
+#' @export
+show_query <- function(.data) {
+  render(.data)
+}
+
 render <- function(.data) {
 
   query_cols <- paste0(render_values(.data), " ON 0")

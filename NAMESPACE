@@ -3,5 +3,6 @@
 export(cube)
 export(filters)
 export(rows)
+export(show_query)
 export(values)
 importFrom(pillar,style_subtle)
