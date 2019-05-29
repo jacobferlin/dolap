@@ -9,6 +9,17 @@ add_op <- function(.data, name, info) {
   .data
 }
 
+#' Specify Cube
+#' @export
+cube <- function(src, cube) {
+  arg <- rlang::enquo(cube)
+
+  .data     <- mdx_tbl()
+  .data$src <- src
+
+  add_op(.data, 'cube', cube)
+}
+
 #' Specify Values
 #' @export
 values <- function(.data, ...) {

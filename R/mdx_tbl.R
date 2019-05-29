@@ -9,17 +9,6 @@ mdx_tbl <- function() {
   )
 }
 
-#' Specify Cube
-#' @export
-cube <- function(src, cube) {
-  arg <- rlang::enquo(cube)
-
-  .data     <- mdx_tbl()
-  .data$src <- src
-
-  add_op(.data, 'cube', cube)
-}
-
 collect.mdx_tbl <- function() {
 
 }
