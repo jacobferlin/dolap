@@ -22,3 +22,10 @@ rows <- function(.data, ...) {
   arg <- rlang::enquos(...)
   add_op(.data, 'rows', arg)
 }
+
+#' Specify Filters
+#' @export
+filters <- function(.data, ...) {
+  arg <- rlang::enquos(...)
+  add_op(.data, 'filters', arg)
+}

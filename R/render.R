@@ -37,6 +37,11 @@ render_rows <- function(.data) {
     paste0("( ", ., " )")
 }
 
+render_filters <- function(.data) {
+  filters_str <- find_filters(.data)
+  browser()
+}
+
 #' Return Cube in .data
 find_cube <- function(.data) {
   find_(.data, "cube")$info
@@ -50,6 +55,11 @@ find_values <- function(.data) {
 #' Return Rows in .data
 find_rows <- function(.data) {
   find_(.data, "rows")$info
+}
+
+#' Return Filters in .data
+find_filters <- function(.data) {
+  find_(.data, "filters")$info
 }
 
 #' Return First Operator with Name
