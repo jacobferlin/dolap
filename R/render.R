@@ -1,5 +1,9 @@
 render <- function(.data) {
-  paste0("SELECT ", render_values(.data), " ON 0 FROM ", render_cube(.data))
+  paste0("SELECT ",
+         render_values(.data), " ON 0, ",
+         render_rows(.data), " ON 1 ",
+         "FROM ",
+         render_cube(.data))
 }
 
 render_cube <- function(.data) {
@@ -13,6 +17,15 @@ render_values <- function(.data) {
     paste0("{ ", ., " }")
 }
 
+render_rows <- function(.data) {
+  rows_str <- find_rows(.data) %>% lapply(rlang::quo_name)
+  dims     <- stringr::str_extract(rows_str, "[:alpha:]+(?=\\.)")
+  hiers    <- stringr::str_extract(rows_str, "(?<=\\.)[:alpha:]+")
+  paste0("[", dims, "].[", hiers, "].CHILDREN") %>%
+    paste0(collapse = ", ") %>%
+    paste0("( ", ., " )")
+}
+
 #' Return Cube in .data
 find_cube <- function(.data) {
   find_(.data, "cube")$info
@@ -24,8 +37,8 @@ find_values <- function(.data) {
 }
 
 #' Return Rows in .data
-find_values <- function(.data) {
-  find_(.data, "values")$info
+find_rows <- function(.data) {
+  find_(.data, "rows")$info
 }
 
 #' Return First Operator with Name
