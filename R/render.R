@@ -3,15 +3,15 @@ render <- function(.data) {
   query_cols <- paste0(render_values(.data), " ON 0")
 
   query_rows <- ifelse(
-    is.null(find_rows(.data)),
-    " ",
-    paste0(", ", render_rows(.data), " ON 1 ")
+    has_rows(.data),
+    paste0(", ", render_rows(.data), " ON 1 "),
+    " "
   )
 
   query_filters <- ifelse(
-    is.null(find_filters(.data)),
-    paste0("FROM ", render_cube(.data)),
-    render_filters(.data)
+    has_filters(.data),
+    render_filters(.data),
+    paste0("FROM ", render_cube(.data))
   )
 
   paste0(
@@ -20,6 +20,14 @@ render <- function(.data) {
     query_rows,
     query_filters
   )
+}
+
+has_rows <- function(.data) {
+  !is.null(find_rows(.data))
+}
+
+has_filters <- function(.data) {
+  !is.null(find_filters(.data))
 }
 
 render_cube <- function(.data) {
