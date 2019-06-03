@@ -3,7 +3,7 @@ cube(con, ProductCube) %>%
   values(Profit,
          MerchandiseSalesQty) %>%
   rows(Date.Year, Product.ProductGroupCurrent) %>%
-  filter(Product.ProductBusinessGroup == "Jotex") %>%
+  filters(Product.ProductBusinessGroup == "Jotex") %>%
   arrange(desc(MerchandiseSalesQty)) %>%
   top_n(10)
 
@@ -22,4 +22,13 @@ FROM ( SELECT [Product].[ProductBusinessGroup].[Jotex] ON 0,
        FROM [ProductCube] )
 
 TODO
- -
+ - Are all scenarios covered with wrapping "... ON 1" with functions?
+  + arrange() %>%
+      top_n() Check!
+  + rows(DateValue) %>%
+      filter(MerchandiseSalesQty > 1000) Check!
+   * https://docs.microsoft.com/en-us/sql/mdx/filter-mdx?view=sql-server-2017
+   * I think this would work
+  + rows(DateValue) %>%
+      filter(MerchandiseSalesQty > 1000) %>%
+      summarize(MerchandiseSalesQty = sum(MerchandiseSalesQty))
