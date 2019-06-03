@@ -39,7 +39,11 @@ print.mdx_tbl <- function(.data) {
 
   tbl <- execute_query(.data)
 
+  # Remove 'Waiting for query...'
   cat(style_subtle("\r"))
+  cat(style_subtle("                      "))
+  cat(style_subtle("\r"))
+
   print(tbl)
 }
 
